@@ -9,6 +9,7 @@ const htmlEditor = CodeMirror.fromTextArea(
     lineNumbers: true,
     autoCloseTags: true,
     tabSize: 2,
+    lineWrapping: true, // Assure que le texte va à la ligne
   }
 );
 
@@ -20,6 +21,7 @@ const cssEditor = CodeMirror.fromTextArea(
     lineNumbers: true,
     autoCloseBrackets: true,
     tabSize: 2,
+    lineWrapping: true, // Assure que le texte va à la ligne
   }
 );
 
@@ -30,6 +32,7 @@ const jsEditor = CodeMirror.fromTextArea(document.getElementById("js-editor"), {
   matchBrackets: true,
   autoCloseBrackets: true,
   tabSize: 2,
+  lineWrapping: true, // Assure que le texte va à la ligne
 });
 
 // Changer de thème
@@ -49,7 +52,7 @@ document.getElementById("dark-mode-toggle").addEventListener("change", (e) => {
 document.getElementById("run-btn").addEventListener("click", () => {
   const html = htmlEditor.getValue();
   const css = `<style>${cssEditor.getValue()}</style>`;
-  const js = `<script>${jsEditor.getValue()}<\/script>`;
+  const js = jsEditor.getValue();
 
   const iframe = document.getElementById("output-frame");
   const documentContent = `
@@ -62,7 +65,25 @@ document.getElementById("run-btn").addEventListener("click", () => {
       </head>
       <body>
         ${html}
-        ${js}
+        <script>
+          // Redefine console.log to output to the iframe
+          (function() {
+            const logContainer = document.createElement('div');
+            document.body.appendChild(logContainer);
+
+            const originalConsoleLog = console.log;
+            console.log = function(message) {
+              originalConsoleLog.apply(console, arguments);
+
+              const logEntry = document.createElement('div');
+              logEntry.textContent = message;
+              logContainer.appendChild(logEntry);
+            };
+          })();
+        <\/script>
+        <script>
+          ${js}
+        <\/script>
       </body>
     </html>
   `;

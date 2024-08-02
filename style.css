@@ -4,7 +4,8 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  background-color: #e3e3e3;
   color: #333;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -25,6 +26,7 @@ header {
 .controls {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .controls label {
@@ -44,15 +46,16 @@ input[type="checkbox"] {
 .editor-container {
   display: flex;
   justify-content: space-between;
-  height: 300px;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* Permet d'adapter la flexibilité */
 }
 
 .editor-pane {
-  flex: 1;
+  flex: 1 1 32%; /* Largeur flexible, minimum de 32% */
   margin-right: 10px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .editor-pane:last-child {
@@ -63,8 +66,13 @@ input[type="checkbox"] {
   text-align: center;
   margin: 0;
   padding: 10px;
-  background-color: #ddd;
+  background-color: #c7c7c7;
   border-bottom: 1px solid #ccc;
+}
+
+#output-frame {
+  border-radius: 0;
+  background-color: #f7f7f7;
 }
 
 textarea {
@@ -74,10 +82,18 @@ textarea {
   padding: 10px;
   font-size: 14px;
   font-family: monospace;
+  white-space: pre-wrap; /* Forcer le texte à aller à la ligne */
+  word-wrap: break-word; /* Pour les mots longs */
+  overflow-wrap: break-word; /* Support additionnel pour aller à la ligne */
+  height: 250px; /* Hauteur fixe pour un rendu uniforme */
+  overflow-y: auto; /* Scroll uniquement vertical */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f7f7f7;
 }
 
 button {
-  background-color: #6200ea;
+  background-color: #263238;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -90,7 +106,8 @@ button {
 }
 
 button:hover {
-  background-color: #3700b3;
+  background-color: #fff;
+  color: #263238;
 }
 
 .output-container {
@@ -101,7 +118,7 @@ button:hover {
   text-align: center;
   margin: 0;
   padding: 10px;
-  background-color: #ddd;
+  background-color: #c7c7c7;
   border-bottom: 1px solid #ccc;
 }
 
@@ -133,4 +150,53 @@ iframe {
 
 .dark-mode button:hover {
   background-color: #222;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Tablets and larger phones (portrait mode) */
+@media (max-width: 1024px) {
+  .editor-pane {
+    flex: 1 1 48%; /* Deux éditeurs par ligne */
+  }
+
+  .editor-container {
+    justify-content: center;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls {
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+  .editor-pane {
+    flex: 1 1 100%; /* Un éditeur par ligne */
+  }
+
+  .editor-container {
+    flex-direction: column;
+  }
+
+  textarea {
+    height: 200px; /* Réduire la hauteur pour les petits écrans */
+  }
+
+  iframe {
+    height: 300px; /* Ajuster la taille de l'iframe */
+  }
+
+  header {
+    align-items: center;
+  }
 }
