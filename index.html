@@ -1,48 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#263238">
+    <link rel="manifest" href="manifest.json">
     <title>Éditeur de Code HTML/CSS/JS</title>
+
     <!-- CodeMirror CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+
     <!-- Thèmes CodeMirror -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/eclipse.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/eclipse.min.css">
+
     <!-- Styles CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="196x196" href="icons/favicon-196.png">
+    <meta name="msapplication-square70x70logo" content="icons/mstile-icon-128.png">
+    <meta name="msapplication-square150x150logo" content="icons/mstile-icon-270.png">
+    <meta name="msapplication-square310x310logo" content="icons/mstile-icon-558.png">
+    <meta name="msapplication-wide310x150logo" content="icons/mstile-icon-558-270.png">
+    <link rel="apple-touch-icon" href="icons/apple-icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
   </head>
   <body>
     <div class="container">
       <header>
         <h1 id="app-title">Éditeur de Code HTML/CSS/JS</h1>
         <div class="controls">
-          <label for="theme-selector" id="theme-label"
-            >Choisir le Thème :</label
-          >
+          <label for="theme-selector" id="theme-label">Choisir le Thème :</label>
           <select id="theme-selector">
             <option value="material">Material</option>
             <option value="dracula">Dracula</option>
             <option value="eclipse">Eclipse</option>
           </select>
           <label for="dark-mode-toggle" id="dark-mode-label">Mode Sombre</label>
-          <input type="checkbox" id="dark-mode-toggle" />
+          <input type="checkbox" id="dark-mode-toggle">
         </div>
       </header>
-
       <main>
         <div class="editor-container">
           <div class="editor-pane" id="html-pane">

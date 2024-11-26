@@ -1,0 +1,16 @@
+{
+  "name": "code-editor",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-icons": "pwa-asset-generator ./src/icon.png ./icons --background '#263238' --manifest manifest.json --index index.html --mstile --favicon --opaque false --padding 0 --type png --icon-only --splash-only false --quality 100 --scrape false"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "pwa-asset-generator": "^6.4.0"
+  }
+}
