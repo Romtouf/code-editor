@@ -4,7 +4,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-icons": "pwa-asset-generator ./src/icon.png ./icons --background '#263238' --manifest manifest.json --index index.html --mstile --favicon --opaque false --padding 0 --type png --icon-only --splash-only false --quality 100 --scrape false"
+    "generate-icons": "pwa-asset-generator ./src/icon.png ./icons --background '#263238' --icon-only --opaque false --padding 0 --type png --path-override '/icons' --icon 72x72 96x96 128x128 144x144 152x152 192x192 384x384 512x512"
   },
   "keywords": [],
   "author": "",
